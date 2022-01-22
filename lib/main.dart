@@ -14,7 +14,7 @@ class WordleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'WORDLE'),
+      home: const MyHomePage(title: 'WRDL'),
     );
   }
 }
@@ -35,13 +35,76 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text(widget.title),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RowOfFrames(),
-          RowOfFrames(),
+        titleTextStyle: const TextStyle(
+          color: Colors.black,
+          //height: 5,
+          fontSize: 40, fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.repeat,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            showAlert(context);
+          },
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.help_outline,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              showAlert(context);
+            },
+          ),
         ],
+      ),
+      body: SafeArea(
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                //margin: const EdgeInsets.all(0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  //crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    RowOfFrames(),
+                    RowOfFrames(),
+                    RowOfFrames(),
+                    RowOfFrames(),
+                    RowOfFrames(),
+                    RowOfFrames(),
+                  ],
+                ),
+                color: Colors.grey[200],
+                //alignment: Alignment.center,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                //color: Colors.blue[600],
+                child: const Center(
+                  child: Text(
+                    'KEYBOARD',
+                    style: TextStyle(
+                      fontSize: 80,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                color: Colors.grey[300],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -54,15 +117,18 @@ class RowOfFrames extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        FrameWidget(letter: 't', colour: Colors.white),
-        FrameWidget(letter: 'e', colour: Colors.blue),
-        FrameWidget(letter: 's', colour: Colors.white),
-        FrameWidget(letter: 't', colour: Colors.green),
-        FrameWidget(letter: 'o', colour: Colors.white),
-      ],
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          FrameWidget(letter: '', colour: Colors.white),
+          FrameWidget(letter: '', colour: Colors.white),
+          FrameWidget(letter: '', colour: Colors.white),
+          FrameWidget(letter: '', colour: Colors.white),
+          FrameWidget(letter: '', colour: Colors.white),
+        ],
+      ),
     );
   }
 }
@@ -77,14 +143,16 @@ class FrameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0,
-      height: 100.0,
+      width: 70.0,
+      height: 70.0,
+      margin: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(2.0),
       decoration: BoxDecoration(
         //borderRadius: BorderRadius.circular(4.0),
         color: colour,
         border: Border.all(
-          color: Colors.black,
-          width: 3,
+          color: Colors.grey,
+          width: 2,
         ),
       ),
       child: Center(
@@ -92,13 +160,21 @@ class FrameWidget extends StatelessWidget {
           letter,
           style: const TextStyle(
             fontFamily: 'Arial',
-            fontSize: 80,
+            //fontSize: 80,
             color: Colors.white,
-            height: 1,
+            //height: 1,
           ),
           textAlign: TextAlign.center,
         ),
       ),
     );
   }
+}
+
+void showAlert(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) => const AlertDialog(
+            content: Text("Shuffle"),
+          ));
 }
