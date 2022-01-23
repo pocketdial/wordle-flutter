@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'keyboard.dart';
 
 void main() {
   runApp(const WordleApp());
@@ -9,12 +10,12 @@ class WordleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       //title: 'WORDLE',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'WRDL'),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      home: MyHomePage(title: 'WRDL'),
     );
   }
 }
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title),
         titleTextStyle: const TextStyle(
@@ -66,6 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               flex: 2,
               child: Container(
@@ -83,26 +87,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     RowOfFrames(),
                   ],
                 ),
-                color: Colors.grey[200],
+                //color: Colors.grey[200],
                 //alignment: Alignment.center,
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                //color: Colors.blue[600],
-                child: const Center(
-                  child: Text(
-                    'KEYBOARD',
-                    style: TextStyle(
-                      fontSize: 80,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+            Expanded(flex: 1, child: keyboard()
+
+                // Container(
+                //   //color: Colors.blue[600],
+                //   child: const Center(
+                //     child: Text(
+                //       'KEYBOARD',
+                //       style: TextStyle(
+                //         fontSize: 80,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ),
+                //   color: Colors.grey[300],
+                // ),
                 ),
-                color: Colors.grey[300],
-              ),
-            ),
           ],
         ),
       ),
@@ -142,29 +146,32 @@ class FrameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 70.0,
-      height: 70.0,
-      margin: const EdgeInsets.all(2.0),
-      padding: const EdgeInsets.all(2.0),
-      decoration: BoxDecoration(
-        //borderRadius: BorderRadius.circular(4.0),
-        color: colour,
-        border: Border.all(
-          color: Colors.grey,
-          width: 2,
-        ),
-      ),
-      child: Center(
-        child: Text(
-          letter,
-          style: const TextStyle(
-            fontFamily: 'Arial',
-            //fontSize: 80,
-            color: Colors.white,
-            //height: 1,
+    return AspectRatio(
+      aspectRatio: 1,
+      child: Container(
+        //width: 70.0,
+        //height: 70.0,
+        margin: const EdgeInsets.all(3.0),
+        padding: const EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+          //borderRadius: BorderRadius.circular(4.0),
+          color: colour,
+          border: Border.all(
+            color: Colors.grey,
+            width: 2,
           ),
-          textAlign: TextAlign.center,
+        ),
+        child: Center(
+          child: Text(
+            letter,
+            style: const TextStyle(
+              fontFamily: 'Arial',
+              //fontSize: 80,
+              color: Colors.white,
+              //height: 1,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
