@@ -10,31 +10,35 @@ Widget keyboard() {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         //crossAxisAlignment: CrossAxisAlignment.,
         children: <Widget>[
-          key('Q', Colors.black, Colors.grey.shade300),
-          key('W', Colors.black, Colors.grey.shade300),
-          key('E', Colors.black, Colors.grey.shade300),
-          key('R', Colors.black, Colors.grey.shade300),
-          key('T', Colors.black, Colors.grey.shade300),
-          key('Y', Colors.black, Colors.grey.shade300),
-          key('U', Colors.black, Colors.grey.shade300),
-          key('I', Colors.black, Colors.grey.shade300),
-          key('O', Colors.black, Colors.grey.shade300),
-          key('P', Colors.black, Colors.grey.shade300),
+          key('Й', Colors.black, Colors.grey.shade300),
+          key('Ц', Colors.black, Colors.grey.shade300),
+          key('У', Colors.black, Colors.grey.shade300),
+          key('К', Colors.black, Colors.grey.shade300),
+          key('Е', Colors.black, Colors.grey.shade300),
+          key('Н', Colors.black, Colors.grey.shade300),
+          key('Г', Colors.black, Colors.grey.shade300),
+          key('Ш', Colors.black, Colors.grey.shade300),
+          key('Щ', Colors.black, Colors.grey.shade300),
+          key('З', Colors.black, Colors.grey.shade300),
+          key('Х', Colors.black, Colors.grey.shade300),
+          key('Ъ', Colors.black, Colors.grey.shade300),
         ],
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          key('A', Colors.black, Colors.grey.shade300),
-          key('S', Colors.black, Colors.grey.shade300),
-          key('D', Colors.black, Colors.grey.shade300),
-          key('F', Colors.black, Colors.grey.shade300),
-          key('G', Colors.black, Colors.grey.shade300),
-          key('H', Colors.black, Colors.grey.shade300),
-          key('J', Colors.black, Colors.grey.shade300),
-          key('K', Colors.black, Colors.grey.shade300),
-          key('L', Colors.black, Colors.grey.shade300),
+          key('Ф', Colors.black, Colors.grey.shade300),
+          key('Ы', Colors.black, Colors.grey.shade300),
+          key('В', Colors.black, Colors.grey.shade300),
+          key('А', Colors.black, Colors.grey.shade300),
+          key('П', Colors.black, Colors.grey.shade300),
+          key('Р', Colors.black, Colors.grey.shade300),
+          key('О', Colors.black, Colors.grey.shade300),
+          key('Л', Colors.black, Colors.grey.shade300),
+          key('Д', Colors.black, Colors.grey.shade300),
+          key('Ж', Colors.black, Colors.grey.shade300),
+          key('Э', Colors.black, Colors.grey.shade300),
         ],
       ),
       Row(
@@ -53,16 +57,18 @@ Widget keyboard() {
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: () {},
-              child: Text('ENTER'),
+              child: const Text('ENTER'),
             ),
           ),
-          key('Z', Colors.black, Colors.grey.shade300),
-          key('X', Colors.black, Colors.grey.shade300),
-          key('C', Colors.black, Colors.grey.shade300),
-          key('V', Colors.black, Colors.grey.shade300),
-          key('B', Colors.black, Colors.grey.shade300),
-          key('N', Colors.black, Colors.grey.shade300),
-          key('M', Colors.black, Colors.grey.shade300),
+          key('Я', Colors.black, Colors.grey.shade300),
+          key('Ч', Colors.black, Colors.grey.shade300),
+          key('С', Colors.black, Colors.grey.shade300),
+          key('М', Colors.black, Colors.grey.shade300),
+          key('И', Colors.black, Colors.grey.shade300),
+          key('Т', Colors.black, Colors.grey.shade300),
+          key('Ь', Colors.black, Colors.grey.shade300),
+          key('Б', Colors.black, Colors.grey.shade300),
+          key('Ю', Colors.black, Colors.grey.shade300),
           //key('DEL', Colors.black, Colors.grey),
           Container(
             margin: const EdgeInsets.all(5),
@@ -75,7 +81,7 @@ Widget keyboard() {
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {},
-                child: Icon(Icons.backspace_outlined) //Text('DEL'),
+                child: const Icon(Icons.backspace_outlined) //Text('DEL'),
                 ),
           ),
         ],
@@ -118,9 +124,103 @@ Widget key(String letter, Color keyColour, Color textColour) {
           //minimumSize: const Size(45, 1),
           textStyle: const TextStyle(fontSize: 20),
         ),
-        onPressed: () {},
+        onPressed: () {
+          addLetter(letter);
+        },
         child: Text(letter),
       ),
     ),
   );
+}
+
+var letterList1 = [
+  'A',
+  'V',
+  'C',
+  '',
+  '',
+];
+var letterList2 = [
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+var letterList3 = [
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+var letterList4 = [
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+var letterList5 = [
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+var letterList6 = [
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+var indexList = 1;
+var indexLetterList1 = 0;
+var indexLetterList2 = 0;
+var indexLetterList3 = 0;
+var indexLetterList4 = 0;
+var indexLetterList5 = 0;
+var indexLetterList6 = 0;
+
+void addLetter(String letter) {
+  if (indexList == 1) {
+    letterList1[indexLetterList1] = letter;
+    indexLetterList1++;
+    if (indexLetterList1 == 5) {
+      indexList++;
+    }
+  } else if (indexList == 2) {
+    letterList2[indexLetterList2] = letter;
+    indexLetterList2++;
+    if (indexLetterList2 == 5) {
+      indexList++;
+    }
+  } else if (indexList == 3) {
+    letterList3[indexLetterList3] = letter;
+    indexLetterList3++;
+    if (indexLetterList3 == 5) {
+      indexList++;
+    }
+  } else if (indexList == 4) {
+    letterList4[indexLetterList4] = letter;
+    indexLetterList4++;
+    if (indexLetterList4 == 5) {
+      indexList++;
+    }
+  } else if (indexList == 5) {
+    letterList5[indexLetterList5] = letter;
+    indexLetterList5++;
+    if (indexLetterList5 == 5) {
+      indexList++;
+    }
+  } else if (indexList == 6) {
+    letterList6[indexLetterList6] = letter;
+    indexLetterList6++;
+    if (indexLetterList6 == 5) {
+      indexList++; //TODO
+    }
+  }
+
+  print(letterList1 + letterList2 + letterList3 + letterList4 + letterList5);
 }

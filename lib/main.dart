@@ -30,8 +30,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var rowList1 = ['', '', '', '', ''];
+  var rowList2 = ['', '', '', '', ''];
+  var rowList3 = ['', '', '', '', ''];
+  var rowList4 = ['', '', '', '', ''];
+  var rowList5 = ['', '', '', '', ''];
+  var rowList6 = ['', '', '', '', ''];
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      rowList1 = letterList1;
+      rowList2 = letterList2;
+      rowList3 = letterList3;
+      rowList4 = letterList4;
+      rowList5 = letterList5;
+      rowList6 = letterList6;
+    });
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -67,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -79,12 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   //crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    RowOfFrames(),
-                    RowOfFrames(),
-                    RowOfFrames(),
-                    RowOfFrames(),
-                    RowOfFrames(),
-                    RowOfFrames(),
+                    RowOfFrames(letterList: rowList1),
+                    RowOfFrames(letterList: rowList2),
+                    RowOfFrames(letterList: rowList3),
+                    RowOfFrames(letterList: rowList4),
+                    RowOfFrames(letterList: rowList5),
+                    RowOfFrames(letterList: rowList6),
                   ],
                 ),
                 //color: Colors.grey[200],
@@ -115,9 +131,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class RowOfFrames extends StatelessWidget {
-  const RowOfFrames({
-    Key? key,
-  }) : super(key: key);
+  const RowOfFrames({Key? key, required this.letterList}) : super(key: key);
+
+  final List letterList;
 
   @override
   Widget build(BuildContext context) {
@@ -126,11 +142,11 @@ class RowOfFrames extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          FrameWidget(letter: '', colour: Colors.white),
-          FrameWidget(letter: '', colour: Colors.white),
-          FrameWidget(letter: '', colour: Colors.white),
-          FrameWidget(letter: '', colour: Colors.white),
-          FrameWidget(letter: '', colour: Colors.white),
+          FrameWidget(letter: letterList[0], colour: Colors.white),
+          FrameWidget(letter: letterList[1], colour: Colors.white),
+          FrameWidget(letter: letterList[2], colour: Colors.white),
+          FrameWidget(letter: letterList[3], colour: Colors.white),
+          FrameWidget(letter: letterList[4], colour: Colors.white),
         ],
       ),
     );
@@ -167,7 +183,7 @@ class FrameWidget extends StatelessWidget {
             style: const TextStyle(
               fontFamily: 'Arial',
               //fontSize: 80,
-              color: Colors.white,
+              color: Colors.black,
               //height: 1,
             ),
             textAlign: TextAlign.center,
