@@ -38,7 +38,7 @@ class KeyButton extends StatelessWidget {
                       .frames[wordCount][letterCount],
                   letter);
             }
-            print('wordCount: $wordCount, letterCount: $letterCount');
+            //print('wordCount: $wordCount, letterCount: $letterCount');
           },
           child: Text(letter),
         ),

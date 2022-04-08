@@ -39,12 +39,24 @@ class KeyData extends ChangeNotifier {
   };
 
   void changeColorUsed(String letter) {
-    keys[letter] = Colors.grey.shade800;
+    keys[letter] = const Color(0xFF787c7e);
+    notifyListeners();
+  }
+
+  void changeColorAlmost(String letter) {
+    keys[letter] = const Color(0xFFc9b458);
     notifyListeners();
   }
 
   void changeColorOk(String letter) {
-    keys[letter] = Colors.green;
+    keys[letter] = const Color(0xFF6aaa64);
+    notifyListeners();
+  }
+
+  void resetKeysColors() {
+    keys.forEach((key, value) {
+      keys[key] = Colors.grey.shade300;
+    });
     notifyListeners();
   }
 }

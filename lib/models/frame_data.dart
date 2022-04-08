@@ -61,7 +61,7 @@ class FrameData extends ChangeNotifier {
 
   void changeRowWinColor() {
     for (int i = 0; i < 5; i++) {
-      frames[wordCount][i].colour = Color(0xFF6aaa64);
+      frames[wordCount][i].colour = const Color(0xFF6aaa64);
       notifyListeners();
     }
   }
@@ -69,5 +69,15 @@ class FrameData extends ChangeNotifier {
   void changeFontColor(Frame frame, Color inFColour) {
     frame.fontColour = inFColour;
     notifyListeners();
+  }
+
+  void resetFrameData() {
+    for (int i = 0; i < 6; i++) {
+      for (int j = 0; j < 5; j++) {
+        frames[i][j].letter = '';
+        frames[i][j].colour = Colors.white;
+        notifyListeners();
+      }
+    }
   }
 }

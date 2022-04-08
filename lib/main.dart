@@ -4,6 +4,7 @@ import 'package:wordle_flutter/widgets/row_of_frames.dart';
 import 'package:wordle_flutter/widgets/keyboard.dart';
 import 'package:wordle_flutter/models/frame_data.dart';
 import 'package:wordle_flutter/models/key_data.dart';
+import 'game.dart';
 
 void main() {
   runApp(const WordleApp());
@@ -58,7 +59,8 @@ class MyHomePage extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            showAlert(context, 'Сам перегружай!');
+            //showAlert(context, 'Сам перегружай!');
+            resetGame(context);
           },
         ),
         actions: <Widget>[
@@ -68,7 +70,8 @@ class MyHomePage extends StatelessWidget {
               color: Colors.black,
             ),
             onPressed: () {
-              showAlert(context, 'Вопросы? И что?');
+              showAlert(context,
+                  'Правила просты донельзя: серый цвет - буква не угадана, жёлтый цвет - угадана, но не на своём месте, зелёный цвет - буква правильная и на своём месте.');
             },
           ),
         ],

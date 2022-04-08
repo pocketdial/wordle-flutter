@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:wordle_flutter/widgets/key_button.dart';
 import 'package:wordle_flutter/models/key_data.dart';
 import 'package:wordle_flutter/models/frame_data.dart';
+import 'package:wordle_flutter/main.dart';
 
 //Widget keyboard() {
 class Keyboard extends StatelessWidget {
@@ -66,7 +67,7 @@ class Keyboard extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (letterCount != 4) {
-                    print('no! 5 буков!');
+                    showAlert(context, 'Введите все 5 букв!');
                   } else {
                     checkWord(context);
                   }
